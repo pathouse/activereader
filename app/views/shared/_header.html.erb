@@ -1,0 +1,19 @@
+<div class="row well">
+  <div class="col-md-offset-2 col-md-8">
+    <h1>AdlerReader <small>Super Alpha Version</small></h1>
+  </div>
+  <div class="col-md-2">
+    <% if current_user %>
+      <button type="button" class="btn btn-info">
+        <span class="glyphicon glyphicon-user"></span> Account
+      </button>
+      <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-log-out"></span> Logout
+      </button>
+    <% else %>
+      <button type="button" class="btn btn-default">
+        <span class="glyphicon glyphicon-log-in"></span> Login
+      </button>
+    <% end %>
+  </div>
+</div>
