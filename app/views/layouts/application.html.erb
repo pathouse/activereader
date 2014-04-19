@@ -9,15 +9,12 @@
 <body>
   <header>
     <%= render 'shared/header' %>
+    <%= render 'shared/topnav' %>
   </header>
-  
-  <div id="flashdiv">
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-  </div>
 
   <div class="row">
     <div class="col-lg-offset-1 col-lg-10">
+      <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
   </div>
