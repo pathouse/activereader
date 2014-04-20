@@ -20,6 +20,10 @@ gem 'simple_form',              '~> 3.0.2'
 #HELPERS
 gem 'stamp',                    '~> 0.5.0'
 
+# EVERNOTE
+gem 'evernote_oauth',           '~> 0.2.3'
+gem 'omniauth-evernote',        '~> 1.2.1'
+
 group :development do
   gem 'foreman',                '~> 0.63.0'
   gem 'spring',                 '~> 1.1.2'

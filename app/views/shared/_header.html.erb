@@ -1,15 +1,23 @@
 <div class="row well">
-  <div class="col-md-offset-2 col-md-8">
+  <div class="col-md-2">
+    <%= render 'shared/topnav' %>
+  </div>
+  <div class="col-md-8">
     <h1>AdlerReader <small>Super Alpha Version</small></h1>
   </div>
   <div class="col-md-2">
     <% if current_user %>
-      <button type="button" class="btn btn-info">
-        <span class="glyphicon glyphicon-user"></span> Account
-      </button>
-      <%= link_to destroy_user_session_path, class: "btn btn-warning", method: :delete do %>
-        <span class="glyphicon glyphicon-log-out"></span> Logout
-      <% end %>
+      <div class="btn-group-vertical">
+        <%= link_to user_account_path(current_user), class: "btn btn-info" do %>
+          <span class="glyphicon glyphicon-user"></span> Account
+        <% end %>
+        <%= link_to user_dashboard_path(current_user), class: "btn btn-success" do %>
+          <span class="glyphicon glyphicon-th"></span> Dashboard
+        <% end %>
+        <%= link_to destroy_user_session_path, class: "btn btn-warning", method: :delete do %>
+          <span class="glyphicon glyphicon-log-out"></span> Logout
+        <% end %>
+      </div>
     <% else %>
       <%= link_to new_user_session_path, class: "btn btn-info" do %>
         <span class="glyphicon glyphicon-log-in"></span> Login
