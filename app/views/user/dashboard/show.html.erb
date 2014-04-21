@@ -1,1 +1,29 @@
-<h1>User Dashboard</h1>
+<div class="page-header text-center">
+  <h2>User Dashboard</h2>
+</div>
+
+<div class="row">
+  <div class="col-lg-6">
+    <h3>Imported Notes</h3>
+  </div>
+
+  <div class="col-lg-6">
+    <h3>Exported Notes</h3>
+    <p> 
+      You have exported <strong><%= @user.evernote_note_count %></strong>
+      notes to Evernote.
+      <%= link_to "#", data: { toggle: "tooltip", placement: "right" }, 
+                       title: "One note is created for all of the highlights in a single document." do %>
+        <span class="glyphicon glyphicon-question-sign"></span>
+      <% end %>
+    </p>
+    <ul class="list-group">
+      <% @notes.each do |note| %>
+        <li class="list-group-item">
+          <%= note.title %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
+

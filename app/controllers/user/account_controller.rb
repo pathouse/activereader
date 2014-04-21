@@ -1,7 +1,8 @@
-class User::AccountController < ApplicationController
+class User::AccountController < User::BaseController
+  before_action :load_user
+  before_action :authorize_user
 
   def show
-    @user = User.find(params[:id])
     @evernote_connected = !!@user.evernote_token
   end
 
