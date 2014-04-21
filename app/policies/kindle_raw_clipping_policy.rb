@@ -1,0 +1,2 @@
+class KindleRawClippingPolicy < ApplicationPolicy
+end

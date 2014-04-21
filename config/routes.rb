@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   namespace :user do
     resources :account, only: [:show]
     resources :dashboard, only: [:show]
+
+    resources :kindle_raw_clippings, except: [:edit, :update]
   end
 
   # You can have the root of your site routed with "root"

@@ -3,8 +3,8 @@ class User::DashboardController < User::BaseController
   before_action :authorize_user
 
   def show
-    en_explorer = Evernote::NoteStoreExplorer.new(@user)
-    @notes = en_explorer.app_notes
+    @note_titles = @user.evernote_note_titles
+    @kindle_raw_clippings = @user.kindle_raw_clippings
   end
 
 end

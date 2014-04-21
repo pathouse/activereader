@@ -1,0 +1,29 @@
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <div class="row">
+      <div class="col-md-7">  
+        <h4>Evernote</h4>
+      </div>
+      <div class="col-md-5">
+        <%= link_to "Export to Evernote", '#', class: "btn btn-default btn-small" %>
+      </div>
+    </div>
+  </div>
+  <div class="panel-body">
+    <p> 
+      You have exported <strong><%= user.evernote_note_count %></strong>
+      notes to Evernote.
+      <%= link_to "#", rel: "tooltip", data: { toggle: "tooltip", placement: "top" }, 
+                       title: "One note is created for all of the highlights in a single book or document." do %>
+        <span class="glyphicon glyphicon-question-sign"></span>
+      <% end %>
+    </p>
+  </div>
+  <ul class="list-group">
+    <% note_titles.each do |note| %>
+      <li class="list-group-item">
+        <%= note %>
+      </li>
+    <% end %>
+  </ul>
+</div>

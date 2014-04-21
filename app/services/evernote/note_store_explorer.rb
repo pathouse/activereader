@@ -40,7 +40,7 @@ class Evernote::NoteStoreExplorer < Evernote::BaseExplorer
 
   def find_or_create_app_notebook
     guid = if has_app_notebook?(notebook_list)
-      notebook = notebook_list.select { |nb| is_app_notebook?(nb) }.first
+      notebook = notebook_list.detect { |nb| is_app_notebook?(nb) }
       notebook.guid
     else
       created_notebook = create_app_notebook

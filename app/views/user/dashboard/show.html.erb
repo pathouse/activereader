@@ -3,27 +3,14 @@
 </div>
 
 <div class="row">
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <h3>Imported Notes</h3>
+    <%= render 'user/dashboard/panels/kindle_raw_clipping_imports', kindle_raw_clippings: @kindle_raw_clippings %>
   </div>
 
-  <div class="col-lg-6">
+  <div class="col-md-6">
     <h3>Exported Notes</h3>
-    <p> 
-      You have exported <strong><%= @user.evernote_note_count %></strong>
-      notes to Evernote.
-      <%= link_to "#", data: { toggle: "tooltip", placement: "right" }, 
-                       title: "One note is created for all of the highlights in a single document." do %>
-        <span class="glyphicon glyphicon-question-sign"></span>
-      <% end %>
-    </p>
-    <ul class="list-group">
-      <% @notes.each do |note| %>
-        <li class="list-group-item">
-          <%= note.title %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render 'user/dashboard/panels/evernote_exports', user: @user, note_titles: @note_titles %>
   </div>
 </div>
 
