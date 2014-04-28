@@ -20,7 +20,7 @@ class User < ActiveRecord::Base
   private
 
   def set_default_notebook_name
-    self.evernote_notebook_name ||= "AdlerReader Notebook"
+    self.evernote_notebook_name ||= "ActiveReader Notebook"
   end
 end
 
