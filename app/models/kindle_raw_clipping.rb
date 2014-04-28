@@ -8,6 +8,11 @@ class KindleRawClipping < ActiveRecord::Base
   validates_attachment_content_type :clipping_file, content_type: /\Atext\/plain\Z/
 
   def parse_raw_clippings
+    #kne = KindleNoteExtractor.new(clipping_file)
+    #kne.create_books_and_notes!
+
+    ## first thing to do
+    ## file_contents = File.new(clipping_file.path).read
   end
 
 end
