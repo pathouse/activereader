@@ -1,4 +1,7 @@
 class User < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   before_create :set_default_notebook_name
 
   # Include default devise modules. Others available are:
@@ -10,6 +13,10 @@ class User < ActiveRecord::Base
   has_many :kindle_raw_clippings
   has_many :kindle_books
   has_many :kindle_notes, through: :kindle_books
+
+  def evernote_linked?
+    !!evernote_token
+  end
 
   def evernote_note_titles
     Rails.cache.fetch("#{cache_key}/evernote_note_titles", expires_in: 12.hours) do 

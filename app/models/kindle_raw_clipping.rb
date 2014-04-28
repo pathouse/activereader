@@ -1,10 +1,14 @@
 class KindleRawClipping < ActiveRecord::Base
+  after_create :parse_raw_clippings
 
   KINDLE_TYPES = [:basic]
 
   belongs_to :user
   has_attached_file :clipping_file
   validates_attachment_content_type :clipping_file, content_type: /\Atext\/plain\Z/
+
+  def parse_raw_clippings
+  end
 
 end
 

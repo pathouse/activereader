@@ -10,4 +10,8 @@ class ApplicationController < ActionController::Base
     flash[:alert] = "You are not authorized to do that."
     redirect_to (current_user ? user_dashboard_path(current_user) : root_path)
   end
+
+  def load_user
+    @user = User.find(params[:id])
+  end
 end

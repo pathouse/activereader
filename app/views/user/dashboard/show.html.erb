@@ -10,7 +10,12 @@
 
   <div class="col-md-6">
     <h3>Exported Notes</h3>
-    <%= render 'user/dashboard/panels/evernote_exports', user: @user, note_titles: @note_titles %>
+    <% if @user.evernote_linked? %>
+      <%= render 'user/dashboard/panels/evernote_exports', user: @user, note_titles: @note_titles %>
+    <% else %>
+      <span class="glyphicon glyphicon-warning-sign"></span>
+      <span class="text-danger">You need to connect to Evernote via your account page.</span>
+    <% end %>
   </div>
 </div>
 

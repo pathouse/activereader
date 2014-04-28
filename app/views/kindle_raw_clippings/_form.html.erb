@@ -1,0 +1,4 @@
+<%= form_for [:user, @kindle_raw_clipping] do |f| %>
+  <%= f.file_field :clipping_file %>
+  <%= f.submit "Upload", class: "btn btn-success" %>
+<% end %>

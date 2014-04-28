@@ -10,10 +10,6 @@ class User::BaseController < ApplicationController
     end
   end
 
-  def load_user
-    @user = User.find(params[:id])
-  end
-
   def authorize_user
     authorize @user
   end

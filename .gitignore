@@ -16,5 +16,6 @@
 
 coverage/**
 public/assets
+public/system
 
 .env

@@ -3,8 +3,7 @@ class User::DashboardController < User::BaseController
   before_action :authorize_user
 
   def show
-    @note_titles = @user.evernote_note_titles
+    @note_titles = @user.evernote_note_titles if @user.evernote_linked?
     @kindle_raw_clippings = @user.kindle_raw_clippings
   end
-
 end

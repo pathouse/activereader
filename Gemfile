@@ -19,6 +19,7 @@ gem 'simple_form',              '~> 3.0.2'
 
 #HELPERS
 gem 'stamp',                    '~> 0.5.0'
+gem 'friendly_id',              '~> 5.0.0'
 
 # EVERNOTE
 gem 'evernote_oauth',           '~> 0.2.3'
