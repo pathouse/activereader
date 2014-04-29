@@ -28,6 +28,14 @@ class Evernote::NoteStoreExplorer < Evernote::BaseExplorer
     @app_notes ||= app_note_list.notes
   end
 
+  def create_note(title, enml_note)
+    note = Evernote::EDAM::Type::Note.new
+    note.title = title
+    note.content = enml_note
+    note.notebookGuid = app_notebook.guid
+    note_store.createNote(note)
+  end
+
   private
 
   def has_app_notebook?(list)
