@@ -16,9 +16,8 @@ Rails.application.routes.draw do
   end
 
   resources :user, only: [] do
-    member do
-      resources :kindle_raw_clippings, except: [:edit, :update]
-    end
+    resources :kindle_books, only: [:index, :show]
+    resources :kindle_raw_clippings, except: [:edit, :update]
   end
 
   # You can have the root of your site routed with "root"

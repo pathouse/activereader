@@ -1,6 +1,3 @@
-require './clipping_importer/parser'
-require './clipping_importer/clipping'
-
 class ClippingImporter
 
   attr_reader :file, :user

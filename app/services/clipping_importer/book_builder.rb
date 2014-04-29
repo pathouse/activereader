@@ -2,14 +2,14 @@ class ClippingImporter::BookBuilder
 
   attr_reader :clipping_collection, :user
 
-  def initialize(collection user)
+  def initialize(collection, user)
     @clipping_collection = collection
     @user = user
   end
 
   def build!
-    book = create_book_for(collection.first)
-    collection.each { |c| create_note_for(c, book) }
+    book = create_book_for(clipping_collection.first)
+    clipping_collection.each { |c| create_note_for(c, book) }
   end
      
   private
