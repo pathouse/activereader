@@ -1,3 +1,0 @@
-$(() ->
-    $("[rel='tooltip']").tooltip()
-)

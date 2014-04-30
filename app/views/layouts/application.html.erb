@@ -6,7 +6,7 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => false %>
   <%= csrf_meta_tags %>
 </head>
-<body>
+<%= body_tag do %>
   <header>
     <%= render 'shared/header' %>
   </header>
@@ -19,5 +19,5 @@
     </div>
   </div>
 
-</body>
+<% end %>
 </html>
