@@ -1,7 +1,7 @@
 class KindleRawClipping < ActiveRecord::Base
   after_create :parse_raw_clippings
 
-  KINDLE_TYPES = [:basic]
+  KINDLE_TYPES = [:dx, :paperwhite, :fire]
 
   belongs_to :user
   has_attached_file :clipping_file

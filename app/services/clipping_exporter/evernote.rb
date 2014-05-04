@@ -13,8 +13,7 @@ class ClippingExporter::Evernote
     end
 
     note_collection.each do |title_and_note|
-      title, note = title_and_note
-      evernote_explorer.create_note(title, note)
+      evernote_explorer.create_note(*title_and_note)
       user.evernote_note_count += 1
     end
     user.save

@@ -18,6 +18,7 @@ class User < ActiveRecord::Base
     !!evernote_token
   end
 
+  # TODO - REFACTOR - PRESENTER METHOD
   def evernote_note_titles
     Rails.cache.fetch("#{cache_key}/evernote_note_titles", expires_in: 12.hours) do 
       Evernote::NoteStoreExplorer.new(self).app_notes.map {|n| n.title}
