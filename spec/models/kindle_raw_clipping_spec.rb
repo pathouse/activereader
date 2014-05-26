@@ -1,21 +1,19 @@
 require "spec_helper"
 
 describe KindleRawClipping do
-  let(:mock_path) { File.expand_path("../../support/clippings", __FILE__) }
-  let(:mock_file) { File.new(File.join(mock_path, "test-clippings.txt")) }
-
   describe "#parse_raw_clippings" do
-    
-    it "should create KindleBooks from a raw clip file" do
-      expect {
-        Fabricate(:kindle_raw_clipping, clipping_file: mock_file)
-      }.to change { KindleBook.count }.by(3)
+     let(:mock_path) { File.expand_path("../../support/clippings", __FILE__) }
+     let(:mock_file) { File.new(File.join(mock_path, "test-clippings.txt")) }
+
+    it "should pass uploaded file to clipping importer after create" do
+      expect_any_instance_of(KindleRawClipping).to receive(:parse_raw_clippings)
+      Fabricate(:kindle_raw_clipping, clipping_file: mock_file)
     end
 
-    it "should create KindleNotes from a raw clip file" do
-      expect {
-        Fabricate(:kindle_raw_clipping, clipping_file: mock_file)
-      }.to change { KindleNode.count }.by(4)
+    describe "creating books and notes" do
+      allow_any_instance_of(KindleRawClipping).to receive(:clipping_file)
+        .and_return(mock_file)
     end
   end
 end
+

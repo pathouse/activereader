@@ -9,10 +9,7 @@ class ClippingImporter::Clipping
     @source, @metadata, @quote = clip_array
     @quote = sanitize(@quote)
     @author = extract_author(@source)
-  end
-
-  def extract_author(title)
-    capture_from_string(title, /\((.*)\)/)
+    @source = clean_author(@source)
   end
 
   def page_number
@@ -32,11 +29,19 @@ class ClippingImporter::Clipping
     DateTime.strptime(date_string, '%A, %B %d, %Y, %I:%M %p')
   end
 
+  private
+
+  def extract_author(title)
+    capture_from_string(title, /\((.*)\)/)
+  end
+
+  def clean_author(str)
+    str.gsub(/\(.*\)/, '').strip
+  end
+
   def sanitize(text)
     CGI::escapeHTML(text)
   end
-
-  private
 
   def capture_from_string(str, pattern)
     matchdata = str.match(pattern)

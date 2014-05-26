@@ -9,13 +9,12 @@ class ClippingImporter::Parser
   end
 
   def parse
-    file_ary = segment(read_path)
-    clip_array = split_and_group(file_ary)
+    split_and_group(segment(clip_contents))
   end
 
   private
 
-  def read_path
+  def clip_contents
     File.new(clip_path).read
   end
 
@@ -25,7 +24,7 @@ class ClippingImporter::Parser
 
   def split_and_group(ary)
     temp = []
-    grouped_ary = ary.each_with_object([]) do |element, final|
+    ary.each_with_object([]) do |element, final|
       unless element == SECTION_DIV
         temp << element
       else
