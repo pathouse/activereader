@@ -1,29 +1,29 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="row">
-      <div class="col-md-7">  
+      <div class="col-md-7">
         <h4>Books</h4>
-      </div>
-      <div class="col-md-5">
-        <%= link_to "View Books", user_kindle_books_path(@user), class: "btn btn-default btn-small" %>
       </div>
     </div>
   </div>
   <div class="panel-body">
-    <p> 
+    <p>
       <strong><%= kindle_books.count %></strong>
       books have been parsed from the raw clipping files you've uploaded.
-      <%= link_to "#", rel: "tooltip", data: { toggle: "tooltip", placement: "top" }, 
+      <%= link_to "#", rel: "tooltip", data: { toggle: "tooltip", placement: "top" },
                        title: "Currently there is no way to make books directly." do %>
         <span class="glyphicon glyphicon-question-sign"></span>
       <% end %>
     </p>
   </div>
-  <ul class="list-group">
-    <% kindle_books.each_with_index do |book, idx| %>
-      <li class="list-group-item">
-        <%= [idx, book.title].join(" -- ") %> 
-      </li>
+  <div class="list-group">
+    <% kindle_books.each do |book| %>
+      <%= link_to user_kindle_book_path(@user, book), class: "list-group-item" do %>
+        <span class="badge">
+          <%= book.kindle_notes.count %>
+        </span>
+        <%= book.title %>
+      <% end %>
     <% end %>
-  </ul>
+  </div>
 </div>

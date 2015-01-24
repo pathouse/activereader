@@ -28,6 +28,9 @@ gem 'omniauth-evernote',        '~> 1.2.1'
 # FILE UPLOADS
 gem 'paperclip',                '~> 4.1.1'
 
+# ZIP EXPORT
+gem 'rubyzip',                  '~> 1.1.3'
+
 group :development do
   gem 'foreman',                '~> 0.63.0'
   gem 'spring',                 '~> 1.1.2'

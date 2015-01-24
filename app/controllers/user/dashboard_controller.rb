@@ -8,3 +8,4 @@ class User::DashboardController < User::BaseController
     @kindle_books = @user.kindle_books
   end
 end
+

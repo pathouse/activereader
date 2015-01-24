@@ -11,8 +11,10 @@ describe KindleRawClipping do
     end
 
     describe "creating books and notes" do
-      allow_any_instance_of(KindleRawClipping).to receive(:clipping_file)
-        .and_return(mock_file)
+      before :each do
+        allow_any_instance_of(KindleRawClipping).to receive(:clipping_file)
+          .and_return(mock_file)
+      end
     end
   end
 end
