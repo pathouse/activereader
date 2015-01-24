@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require bootstrap
-//= require react
 //= require lodash
+//= require medium-editor-2.0.0/medium-editor
+//= require react-0.12.2/react
 //= require_tree .

@@ -2,6 +2,7 @@ class KindleNote < ActiveRecord::Base
 
   belongs_to :kindle_book
 
+  scope :active, -> { where(deleted_at: nil) }
 end
 
 # == Schema Information

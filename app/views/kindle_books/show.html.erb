@@ -1,31 +1,15 @@
-<div class="page-header">
-  <h1>
-    <%= @kindle_book.title %>
-  </h1>
-</div>
+<script>
+  $(document).ready(function() {
+    var props = { book: <%= KindleBooksSerializer.new(@kindle_book, root: false).to_json.html_safe %> }
+    var mountPoint = document.getElementById('react-note-index-mount')
+    if (mountPoint) {
+      React.renderComponent(NotesIndex(props), mountPoint)
+    }
+  })
+</script>
 
 <div class="row">
-  <div class="col-md-10">
-    <h2>Notes</h2>
-    <% @kindle_book.kindle_notes.each do |note| %>
-      <div class="panel panel-default">
-        <div class="panel-heading">
-          <h3 class="panel-title">
-            Page: <%= note.page_number %>, 
-            <% if note.location_info %>
-              <%= "Location: #{note.location_info}," %> 
-            <% end %>
-            Date: <%= note.annotated_at.stamp("Mar 31, 1990") %>
-          </h3>
-        </div>
-        <div class="panel-body">
-          <p>
-            <%= note.content %>
-          </p>
-        </div>
-      </div>
-    <% end %>
-  </div>
+  <div class="col-md-10" id="react-note-index-mount"></div>
   <div class="col-md-2">
     <%= link_to "BACK", user_dashboard_path(@user), class: "btn btn-default" %>
   </div>

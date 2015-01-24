@@ -1,13 +1,26 @@
-class Api::KindleNotesController < ApplicationController
-  before_filter :load_kindle_book
+class Api::KindleNotesController < Api::BaseController
 
-  def index
+  def update
+    kindle_note = KindleNote.find(params[:id])
+    if kindle_note.update_attributes(permitted_params)
+      render json: kindle_note, root: false, status: :ok
+    else
+      render json_errors_for(kindle_note)
+    end
+  end
 
+  def destroy
+    kindle_note = KindleNote.find(params[:id])
+    if kindle_note.update_attributes(deleted_at: Time.now)
+      render json: kindle_note, root: false, status: :ok
+    else
+      render json_errors_for(kindle_note)
+    end
   end
 
   private
 
-  def load_and_authorize_kindle_book
-    @book = KindleBook.find(params[:kindle_book_id])
+  def permitted_params
+    params.require(:kindle_note).permit(:content)
   end
 end

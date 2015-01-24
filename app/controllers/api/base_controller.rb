@@ -1,9 +1,8 @@
-class Api::BaseController < ApplicationController
-  before_action :preliminary_authorization
+class Api::BaseController < ::AuthController
 
   private
 
-  def preliminary_authorization
-
+  def json_errors_for(object)
+    { json: object.errors.full_messages.to_json, status: :unprocessable_entity }
   end
 end

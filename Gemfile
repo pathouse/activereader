@@ -16,7 +16,7 @@ gem 'uglifier',                 '~> 1.3.0'
 gem 'coffee-rails',             '~> 4.0.0'
 gem 'jquery-rails',             '~> 3.1.0'
 gem 'simple_form',              '~> 3.0.2'
-gem 'react-rails',              '~> 0.12.2.0'
+gem 'react-rails',              '~> 0.12.0'
 gem 'lodash-rails',             '~> 2.4.0'
 
 #HELPERS

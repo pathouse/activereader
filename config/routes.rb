@@ -21,4 +21,7 @@ Rails.application.routes.draw do
     resources :text_export, only: [:index]
   end
 
+  namespace :api do
+    resources :kindle_notes, only: [:update, :destroy]
+  end
 end

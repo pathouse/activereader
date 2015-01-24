@@ -12,5 +12,7 @@
  *
  *= require_tree .
  *= require_self
+ *= require medium-editor/main
+ *= require medium-editor/themes/bootstrap
  */
 @import "bootstrap";
