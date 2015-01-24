@@ -1,7 +1,7 @@
 class KindleNote < ActiveRecord::Base
 
   belongs_to :kindle_book
-  
+
 end
 
 # == Schema Information

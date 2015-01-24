@@ -1,7 +1,6 @@
 jQuery ->
   new Common()
   data = $('body').data()
-  debugger
   action = data.action
   controller = data.controller.camelize()
   return unless typeof window[controller] == 'function'

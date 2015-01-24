@@ -16,10 +16,15 @@ gem 'uglifier',                 '~> 1.3.0'
 gem 'coffee-rails',             '~> 4.0.0'
 gem 'jquery-rails',             '~> 3.1.0'
 gem 'simple_form',              '~> 3.0.2'
+gem 'react-rails',              '~> 0.12.2.0'
+gem 'lodash-rails',             '~> 2.4.0'
 
 #HELPERS
 gem 'stamp',                    '~> 0.5.0'
 gem 'friendly_id',              '~> 5.0.0'
+
+# SERIALIZERS
+gem 'active_model_serializers', '~> 0.9.0'
 
 # EVERNOTE
 gem 'evernote_oauth',           '~> 0.2.3'
@@ -27,9 +32,6 @@ gem 'omniauth-evernote',        '~> 1.2.1'
 
 # FILE UPLOADS
 gem 'paperclip',                '~> 4.1.1'
-
-# ZIP EXPORT
-gem 'rubyzip',                  '~> 1.1.3'
 
 group :development do
   gem 'foreman',                '~> 0.63.0'
