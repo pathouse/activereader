@@ -1,14 +1,8 @@
 class KindleRawClipping < ActiveRecord::Base
-  after_create :parse_raw_clippings
 
   belongs_to :user
   has_attached_file :clipping_file
   validates_attachment_content_type :clipping_file, content_type: /\Atext\/plain\Z/
-
-  def parse_raw_clippings
-    importer = ClippingImporter.new(clipping_file, user)
-    importer.create_books_and_notes!
-  end
 
 end
 

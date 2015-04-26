@@ -8,11 +8,11 @@ class KindleRawClippingsController < ApplicationController
   end
 
   def create
-    @kindle_raw_clipping = KindleRawClipping.new(permitted_params)
+    @kindle_raw_clipping = @user.kindle_raw_clippings.new(permitted_params)
     if @kindle_raw_clipping.save
-      @user.kindle_raw_clippings << @kindle_raw_clipping
+      ClippingImporter.import!(@kindle_raw_clipping.clipping_file.path, @user)
       flash[:notice] = "New raw clipping file successfully uploaded!"
-      redirect_to kindle_raw_clippings_path(@user)
+      redirect_to user_kindle_raw_clippings_path(@user)
     else
       flash[:error] = "Something went wrong with your upload."
       render :new
@@ -29,7 +29,7 @@ class KindleRawClippingsController < ApplicationController
   def destroy
     @kindle_raw_clipping.destroy
     flash[:notice] = "Raw clipping file successfully destroyed."
-    redirect_to kindle_raw_clippings_path(@user)
+    redirect_to user_kindle_raw_clippings_path(@user)
   end
 
   private

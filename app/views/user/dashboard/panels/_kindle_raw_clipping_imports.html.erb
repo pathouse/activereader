@@ -1,7 +1,7 @@
 <div class="panel panel-default">
   <div class="panel-heading">
     <div class="row">
-      <div class="col-md-7">  
+      <div class="col-md-7">
         <h4>Raw Clipping Files</h4>
       </div>
       <div class="col-md-5">
@@ -10,10 +10,10 @@
     </div>
   </div>
   <div class="panel-body">
-    <p> 
+    <p>
       You have uploaded <strong><%= kindle_raw_clippings.count %></strong>
       raw clipping files from your Kindle.
-      <%= link_to "#", rel: "tooltip", data: { toggle: "tooltip", placement: "top" }, 
+      <%= link_to "#", rel: "tooltip", data: { toggle: "tooltip", placement: "top" },
                        title: "These may eventually be limited in number based on resource constraints." do %>
         <span class="glyphicon glyphicon-question-sign"></span>
       <% end %>
@@ -22,7 +22,7 @@
   <ul class="list-group">
     <% kindle_raw_clippings.each_with_index do |clipping, idx| %>
       <li class="list-group-item">
-        <%= [idx, clipping.created_at].join(" -- ") %> 
+        <%= [idx + 1, clipping.created_at.stamp('Uploaded March 31, 1990 at 2:15 PM')].join(" -- ") %>
       </li>
     <% end %>
   </ul>

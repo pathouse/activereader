@@ -1,33 +1,26 @@
 class ClippingImporter
+  class << self
 
-  attr_reader :file, :user
+    def import!(file_path, user)
+      clipping_parser = ClippingImporter::Parser.new(file_path)
+      clippings = clipping_parser.parse.map {|c| ClippingImporter::Clipping.new(c) }
 
-  def initialize(file, user)
-    @file = file
-    @user = user
-  end
-
-  def create_books_and_notes!
-    clipping_parser = ClippingImporter::Parser.new(file.path)
-    clippings = clipping_parser.parse.map {|c| ClippingImporter::Clipping.new(c) }
-    
-    grouped_by_source = group_clippings_by_source(clippings)
-
-    grouped_by_source.values.each do |clipping_collection|
-      ClippingImporter::BookBuilder.new(clipping_collection, user).build!
+      grouped_by_source = group_clippings_by_source(clippings)
+      grouped_by_source.values.each do |clipping_collection|
+        ClippingImporter::BookBuilder.new(clipping_collection, user).build!
+      end
     end
-  end
 
-  private
+    private
 
-  def group_clippings_by_source(clippings)
-    clippings.each_with_object({}) do |clip, hsh|
-      unless hsh.keys.include? clip.source
-        hsh[clip.source] = [clip]
-      else
-        hsh[clip.source] << clip
+    def group_clippings_by_source(clippings)
+      clippings.each_with_object({}) do |clipping, result|
+        unless result.keys.include? clipping.source
+          result[clipping.source] = [clipping]
+        else
+          result[clipping.source] << clipping
+        end
       end
     end
   end
-
 end
