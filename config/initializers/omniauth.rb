@@ -1,8 +1,9 @@
-config = YAML.load(ERB.new(File.read('config/evernote.yml')).result)[Rails.env]
-site = config['sandbox'] ? 'https://sandbox.evernote.com' : 'https://www.evernote.com'
+consumer_key = ENV["EVERNOTE_CONSUMER_KEY"]
+consumer_secret = ENV["EVERNOTE_SECRET_KEY"]
+sandbox = ENV["EVERNOTE_SANDBOX"]
 
 Rails.application.config.middleware.use OmniAuth::Builder do
-  provider :evernote, config['consumer_key'], config['consumer_secret'], client_options: { site: site }
+  provider :evernote, consumer_key, consumer_secret, client_options: { site: sandbox }
 end
 
 OmniAuth.config.on_failure = User::AccountController.action(:show)
